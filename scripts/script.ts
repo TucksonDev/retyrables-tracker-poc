@@ -1,6 +1,9 @@
 import { isAddress } from 'ethers';
 import { fetchPendingRetryablesFromAddress, fetchLatestDepositRetryablesFromAddress, fetchLatestNonDepositRetryablesFromAddress } from './subgraphs';
 
+const etherscanTxBaseUrl = 'https://etherscan.io/tx/';
+const arbiscanTxBaseUrl = 'https://arbiscan.io/tx/';
+
 function isValidEthereumAddress(address: string): boolean {
     return isAddress(address);
 }
@@ -24,6 +27,9 @@ async function showPendingRetryablesFromAddress(address: string): Promise<void> 
 
             retryableInfo.innerHTML = `
                 <p>ID: ${retryable.id}</p>
+                <p>L1 submission transaction: <a target="_blank" href="${etherscanTxBaseUrl + retryable.creationTx.transactionHash}">${etherscanTxBaseUrl + retryable.creationTx.transactionHash}</a></p>
+                <p>L2 retryable creation transaction: <a target="_blank" href="${arbiscanTxBaseUrl + retryable.createdAtTxHash}">${arbiscanTxBaseUrl + retryable.createdAtTxHash}</a></p>
+                <p>L2 final transaction: <a target="_blank" href="${arbiscanTxBaseUrl + retryable.transactionHash}">${arbiscanTxBaseUrl + retryable.transactionHash}</a></p>
                 <p>Status: ${retryable.status}</p>
                 <p>Timeout Timestamp: ${new Date( (retryable.timeoutTimestamp * 1000) )}</p>
                 <p>Sent from: ${retryable.creationTx.sender}</p>
@@ -58,6 +64,9 @@ async function showLatestDepositRetryablesFromAddress(address: string): Promise<
             retryableInfo.innerHTML = `
                 <p>ID: ${retryable.id}</p>
                 <p>Status: ${retryable.submissionTx.l2Ticket.status}</p>
+                <p>L1 submission transaction: <a target="_blank" href="${etherscanTxBaseUrl + retryable.transactionHash}">${etherscanTxBaseUrl + retryable.transactionHash}</a></p>
+                <p>L2 retryable creation transaction: <a target="_blank" href="${arbiscanTxBaseUrl + retryable.submissionTx.retryableTicketID}">${arbiscanTxBaseUrl + retryable.submissionTx.retryableTicketID}</a></p>
+                <p>L2 final transaction: <a target="_blank" href="${arbiscanTxBaseUrl + retryable.submissionTx.l2Ticket.retryTxHash}">${arbiscanTxBaseUrl + retryable.submissionTx.l2Ticket.retryTxHash}</a></p>
                 <p>Timeout Timestamp: ${new Date( (retryable.submissionTx.l2Ticket.timeoutTimestamp * 1000) )}</p>
                 <p>Sent from: ${retryable.sender}</p>
                 <p>Token information:</p><pre>${JSON.stringify(retryable.l1Token)}</pre>
@@ -87,6 +96,9 @@ async function showLatestNonDepositRetryablesFromAddress(address: string): Promi
             retryableInfo.innerHTML = `
                 <p>ID: ${retryable.id}</p>
                 <p>Status: ${retryable.l2Ticket.status}</p>
+                <p>L1 submission transaction: <a target="_blank" href="${etherscanTxBaseUrl + retryable.transactionHash}">${etherscanTxBaseUrl + retryable.transactionHash}</a></p>
+                <p>L2 retryable creation transaction: <a target="_blank" href="${arbiscanTxBaseUrl + retryable.retryableTicketID}">${arbiscanTxBaseUrl + retryable.retryableTicketID}</a></p>
+                <p>L2 final transaction: <a target="_blank" href="${arbiscanTxBaseUrl + retryable.l2Ticket.retryTxHash}">${arbiscanTxBaseUrl + retryable.l2Ticket.retryTxHash}</a></p>
                 <p>Timeout Timestamp: ${new Date( (retryable.l2Ticket.timeoutTimestamp * 1000) )}</p>
                 <p>Sent from: ${retryable.sender}</p>
                 <p>Full object</p><pre class="fullObjectInfo">${JSON.stringify(retryable)}</pre>
