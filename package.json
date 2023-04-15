@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild scripts/script.ts --bundle --platform=browser --target=es2015 --outfile=dist/bundle.js"
+    "build": "esbuild scripts/script.ts --bundle --platform=browser --target=es2015 --outfile=public/dist/bundle.js"
   },
   "keywords": [],
   "author": "",
