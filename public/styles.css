@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    text-align: center;
+}
+
+h1 {
+    color: blue;
+}
+
+button {
+    background-color: lightblue;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+.fullObjectInfo {
+    width: 90%;
+    word-wrap: break-word;
+    white-space: normal;
+    margin: 0 auto;
+}

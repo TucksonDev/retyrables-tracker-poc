@@ -4,7 +4,7 @@
       "module": "commonjs",
       "strict": true,
       "esModuleInterop": true,
-      "outDir": "./public"
+      "outDir": "./dist"
     },
     "include": ["scripts/*.ts"]
   }
