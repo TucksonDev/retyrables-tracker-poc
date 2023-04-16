@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1><a href="index.html">Retryables tracker</a></h1>
+    <h1 class="main-title"><a href="index.html">Retryables tracker</a></h1>
     <form id="addressForm">
         <input type="text" id="addressInput" placeholder="Enter an Ethereum address" required><br />
         <input type="checkbox" id="onlyDepositsCheckbox">
@@ -15,8 +15,10 @@
         <button type="submit">Submit</button>
     </form>
 
-    <div id="pendingResult" hidden></div>
-    <div id="latestResult" hidden></div>
+    <div class="container">
+        <div id="pendingResult" hidden></div>
+        <div id="latestResult" hidden></div>
+    </div>
     
     <!-- JS -->
     <script src="dist/bundle.js"></script>

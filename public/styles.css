@@ -4,7 +4,7 @@ body {
     text-align: center;
 }
 
-h1 {
+h1.main-title {
     color: blue;
 }
 
@@ -26,4 +26,24 @@ button {
     word-wrap: break-word;
     white-space: normal;
     margin: 0 auto;
+}
+
+#pendingResult,
+#latestResult {
+    width: 95%;
+    padding: 1em;
+    margin: 1em auto;
+    border: 2px solid black;
+}
+
+#pendingResult {
+    border-color: blue;
+}
+
+#collapse-trigger {
+    cursor: pointer;
+}
+
+#collapseBox.closed {
+    display: none;
 }

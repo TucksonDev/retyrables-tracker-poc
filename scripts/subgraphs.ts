@@ -281,7 +281,6 @@ export async function fetchLatestDepositRetryablesFromAddress(address: string, r
         `;
     
         const resultForL2Ticket = await querySubgraph(queryForL2Ticket, RETRYABLES_SUBGRAPH_URL);
-        console.log(resultForL2Ticket);
         // For some reason there isn't any retryable information (WEIRD!)
         if (resultForL2Ticket.retryables.length <= 0) 
         {
@@ -369,7 +368,6 @@ export async function fetchLatestNonDepositRetryablesFromAddress(address: string
         `;
     
         const resultForL2Ticket = await querySubgraph(queryForL2Ticket, RETRYABLES_SUBGRAPH_URL);
-        console.log(resultForL2Ticket);
         // For some reason there isn't any retryable information (WEIRD!)
         if (resultForL2Ticket.retryables.length <= 0) 
         {
